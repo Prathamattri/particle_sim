@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                           // Specifies the target ECMAScript version (ES6+)
+    "module": "ESNext",                        // Specifies module system (ESNext, for modern JavaScript)
+    "strict": true,                            // Enables all strict type-checking options
+    "allowJs": true,                           // Allows JavaScript files to be compiled
+    "checkJs": true,                           // Enables type checking in JavaScript files
+    "esModuleInterop": true,                   // Enables interoperability between CommonJS and ESModules
+    "outDir": "./dist",                        // Directory where the compiled output will be placed
+    "skipLibCheck": true,                      // Skips type checking of declaration files (.d.ts)
+    "forceConsistentCasingInFileNames": true   // Ensures consistent file name casing across the project
+  },
+  "include": [
+    "src/**/*"                                 // Includes all JavaScript files in the 'src' folder for compilation
+  ],
+  "exclude": [
+    "node_modules"                             // Excludes the 'node_modules' folder from being compiled
+  ]
+}
+
