@@ -12,7 +12,7 @@ class Particle {
 		this.velocity = { x: 0, y: 0 };
 		this.acc = { x: 0, y: 1000 };
 		this.collided = 0;
-		this.sound = new Audio(`../assets/bounce_sound${Math.floor(Math.random() * 2)}.mp3`);
+		this.sound = new Audio(`../assets/bounce_sound.mp3`);
 	}
 
 	/**
