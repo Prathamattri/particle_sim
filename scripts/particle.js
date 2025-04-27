@@ -1,16 +1,18 @@
+import ColorGenerator from "./random_color.js"
 class Particle {
 	/** @constructor
 	* @param {number} xPos x coordinate of particle's initial position
 	* @param {number} yPos y coordinate of particle's initial position
 	*/
 	constructor(xPos, yPos) {
-		this.color = "#FFFFFF";
+		this.color = ColorGenerator.generate();
 		this.size = 10;
 		this.current_position = { x: xPos, y: yPos }
 		this.last_position = { x: xPos, y: yPos };
 		this.velocity = { x: 0, y: 0 };
 		this.acc = { x: 0, y: 1000 };
 		this.collided = 0;
+		this.sound = new Audio(`../assets/bounce_sound${Math.floor(Math.random() * 2)}.mp3`);
 	}
 
 	/**
@@ -67,29 +69,26 @@ class Particle {
 
 			if (this.collided == 0) {
 
-				const sound = new Audio("../assets/bounce_sound2.mp3");
-				sound.play();
-				sound.addEventListener("ended", (e) => {
-					e.target.src = ""
-				})
+				this.sound.play();
+
 				this.collided = 1;
 			}
 		} else {
 
 			if (startX >= x - this.size) {
 				this.current_position.x = startX + this.size;
-				this.velocity.x *= -1;
+				this.velocity.x *= -0.7888;
 			} else if (x + this.size >= endX) {
 				this.current_position.x = endX - this.size;
-				this.velocity.x *= -1;
+				this.velocity.x *= -0.7888;
 			}
 
 			if (startY >= y - this.size) {
 				this.current_position.y = startY + this.size;
-				this.velocity.y *= -1;
+				this.velocity.y *= -0.7888;
 			} else if (y + this.size >= endY) {
 				this.current_position.y = endY - this.size;
-				this.velocity.y *= -1;
+				this.velocity.y *= -0.7888;
 			}
 		}
 	}
@@ -111,6 +110,7 @@ class Particle {
 		const { x, y } = this.current_position;
 		ctx.fillStyle = this.color;
 		ctx.strokeStyle = this.color;
+		console.log(this.color)
 		ctx.beginPath();
 		ctx.arc(x, y, this.size, 0, 2 * Math.PI);
 		ctx.fill();
